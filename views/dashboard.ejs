@@ -1,0 +1,75 @@
+<%- include('partials/header') %>
+<div class="card">
+    <div class="card-header">
+        <h5>User Info: <%= user.name %> || <%= user.email %> </h5>
+    </div>
+    <div class="card-body">
+        
+        <div class="table-responsive">
+            <% if (products !='') { %>
+        <table class="table table-stripped text-center">
+            <thead>
+                <tr class="table-dark">
+                    <th>ProductID</th>
+                    <th>Image</th>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% products.forEach((row, index) => { %>
+                    <tr>
+                        <td><%= index %></td>
+                        <td><img src="<%= row.image %>" width="50" class="img-thumbnail"></td>
+                        <td><%= row.ProductName %></td>
+                        <td><%= row.Quantity %></td>
+                        <td><%= row.Price %></td>
+                        <td>
+                            <a href="/edit/<%= row.id %>" class="text-success"><i class="fas fa-edit fa-lg mx-1"></i></a>
+                            <button onclick="deleteConfirm()"><a href="/delete/<%= row.id %>" class="text-danger"><i class="fas fa-trash fa-lg mx-1"></i></a></button>
+                            <p id="demo"></p>
+                        </td>
+                    </tr>
+                <% }) %>
+                
+            </tbody>
+        </table>
+        <% } else { %>
+            <h1 class="text-center text-secondary mt-5">No products found in the database!</h1>
+        <% } %>
+    </div>
+    <div class="card-footer">
+        <a href="/add" class="btn btn-primary">Add Product </a>
+    </div>
+</div>
+
+<script>
+    const deleteConfirm = () => {
+        const response = confirm("Are you sure you would like to deleted the product?");
+
+        if (response) {
+            alert("You have deleted the product");
+        }
+
+        else {
+            alert("You canceled the the action to delete the product.");
+        }
+
+        return 1;
+    }
+</script>
+
+<script>
+    $(document).ready(function(){
+        $('table').DataTable({
+            order:[0,'desc']
+        });
+    })
+</script>
+
+
+
+
+

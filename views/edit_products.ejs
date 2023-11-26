@@ -1,0 +1,41 @@
+<%- include('partials/header') %>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 mx-auto mt-4">
+            <div class="card shadow">
+                <div class="card-header bg-success">
+                    <h3 class="text-light">Edit Product (<%= product.ProductName %>) </h3>
+                </div>
+                <div class="card-body p-4">
+                    <form action="/update/<%= product._id %>" method="post" id="add-form" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="ProductName">Product Name</label>
+                            <input for="text" name="ProductName" class="form-control form-control-lg" placeholder="Enter Product Name" value="<%= product.ProductName %>" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="Quantity">Quantity</label>
+                            <input for="Quantity" name="Quantity" class="form-control form-control-lg" placeholder="Enter Quantity" value="<%= product.Quantity %>" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="Price">Price</label>
+                            <input for="Price" name="Price" class="form-control form-control-lg" placeholder="Enter Price" value="<%= product.Price %>" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Select Image</label>
+                            <input type="file" name="image" class="form-control form-control-lg">
+                            <img src="<%= product.image %>" width="200" class="img-thumbnail mt-1">                         
+                        </div>
+                        <input type="hidden" name="old_image" value="<%= product.image %>" />
+                        <div class="mb-3 d-grid">
+                            <input type="submit" name="submit" value="Update Product" class="btn btn-success btn-lg" />
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+npm init -y
+npm i express
+npm i bcryptjs
+npm i passport
+npm i passport-local
+npm i ejs express express-ejs-layouts
+npm i mongoose
+npm i connect-flash
+npm i express-session
