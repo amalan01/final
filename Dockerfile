@@ -1,4 +1,4 @@
 FROM mhart/alpine-node
 COPY . /app
-CMD node /app/index.js
+CMD node /app/app.js
 EXPOSE  5000
