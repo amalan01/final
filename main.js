@@ -7,6 +7,7 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const passport = require('passport');
 const app = express();
+app.set('views', path.join(__dirname, "views"));
 
 // Middleware
 app.use(express.urlencoded({ extended: false }));
